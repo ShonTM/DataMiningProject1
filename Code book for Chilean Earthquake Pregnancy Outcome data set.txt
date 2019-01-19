@@ -1,0 +1,112 @@
+
+Codebook for the Chilean earthquake pregnancy outcome data set.
+Created by Heber Nielsen from inspecting the .csv file of data, 18 Jan 2019
+For each variable (column), first line below gives Spanish name, English equivalent, and data type as labeled by STATA. Second line gives morexplanation of the variable.
+
+id_clinica = Clinic_ID
+      ID# of the medical clinic (numeric, long)
+
+id_excel = Excel_File_ID (numeric, int)
+     ID# of the excel line in the first "whole data" file before eliminating non-eligible pregnancies/deliveries (see chart of data cleaning)
+
+dia = Day (numeric, byte)
+     Day of the month the baby was born
+
+mes = Month  (numeric, byte)
+    Month of birth of the infant (numeric)
+
+ano = Year (numeric, int)
+     Year of birth
+
+sexo = Sex (numeric, byte)
+     Values: Mujer = Female; Hombre = Male
+     Sex of the infant. In the Stata data file these were converted to numeric values:
+	0 (hombre) =  male
+	1 (mujer) = females
+
+peso = Weight (numeric, int)
+     The birth weight of the infant, in grams, rounded to 1 gram
+
+talla = Length (numeric, float)
+    The length (i.e., height) of the baby in cm, rounded to 0.1 cm  "Talla" actually means "size" but this is the length measurement.
+
+cc = Head_circ (Head circumference (numeric, float) )
+     The circumference of the head, measured at about the forehead/eyebrow level, in cm, rounded to 0.01 cm.
+
+apgar = Apgar_1 [the Apgar score at one minute of life]    (numeric, byte)
+     See apgar5 for more explanation.
+
+apgar5 = Apgar_5 [the Apgar score at five minutes of life]   (numeric, byte)
+     The Apgar score is a sum of five physiologic parameters each scored from zero to two. So the Apgar score can range from 0 to 10. 
+     This score is routinely calculated for all newborn infants at 1 and 5 minutes of age. It is a clinical summary of how well a newborn is 
+     making the transition into life outside of the uterus. A "normal" score is 7 or more. Lower scores indicate a "difficult" transition, and may           reflect either intrinsic or extrinsic factors that are affecting the infant. 
+     While both scores are useful as a standardized documentation of  the transition process, only the 5 minute Apgar has some prediction           power for long term outcome. 
+
+comuna = Municipality (numeric, byte)
+     They used Average Annual Income (in millions of Chilean Pesos) binned into 3 categories, to identify the "place of residence", using their           term from the publication.  I'm not sure, but I think that "place of residence"  is the same as what we term "socio-economic status".
+     In the Stata data set this is given 3 values, defined as the following:
+ 	0 = > 1.5 million (high incomel)
+	1 = 1.0 million to 1.5 million (medium income)
+	2 = 500,000 to 1.0 million (low income)
+    
+
+aeg = wgt_for_age (the baby's weight for gestational age (numeric (byte) )
+     Newborn babies are rated as being small for gestational age, appropriate for gestational age, or large for gestational age.
+     These designations come from population-based nomograms, and are a function of birth weight and the gestational age.
+     The designation is important because small for gestational age (SGA) and large for gestational age (LGA) babies are biomarkers of
+     risk for important problems in the first days of life. SGA is defined as <10%ile for gestational age. LGA is defined as >90%ile for gestational       age.
+     In the Stata data set these are designated as follows:
+	0 = Appropriate for Gestational Age (AGA)
+	1 = Small for Gestational Age
+	2 = Large for Gestational Age
+
+eg = Gest_age (Gestational age (numeric, byte))
+     The gestational age of the child at birth. Given in completed weeks (i.e., 37 weeks plus 4 days is 37)
+
+trim_exp = Trimester  (numeric, float)
+    Pregnancies are divided into thirds, called trimesters. This variable indicates the specific trimester (part) of the pregnancy that corresponded     to the date of the earthquake, whether in the quake year or in the control year. The study population is comprised of women who were     pregnant during the time of the earthquake, or at the same time of the year in the previous  year. This variable only classifies the 
+    trimester against the time of year, irrespective of which year.  In the Stata data set this is given as follows:
+	1 (primero) = First 
+	2 (segundo) = Second 
+	3 (tercero) = Third 
+
+bajo_peso = Low_birthwgt (Low birthweight (numeric, float))
+     A different biomarker of a newborn's risk of problems at birth is whether the child is "Low Birthweight", routinely defined as <2500 
+     grams at birth. It is an older and weaker means of identifying babies at risk of problems in the newborn period  than the size for gestational      age (above) or gestational age at birth (below) but it continues to be recorded in many studies of newborns. The Stata data set gives two      values:
+	0 = normal birthweight (sobre 2500)
+	1 = low birthweight (bajo 2500)
+
+pretermino = Premature (numeric, float)
+     Designates a baby as having been born premature (less than 37 weeks of gestation). A stronger indicator of risk of problems in the newborn      period than Low Birthweight. Values in Stata:
+     	0 (sobre 37) = Not premature
+	1 (34 - 37) = Premature
+
+edad_mama = Maternal_age (numeric, float)
+     Age of the mother, in years. I am a bit worried about my accuracy for this translation, as Stata gives a range for the values of this variable      (14, 44) that is different from that given in the publication (24 - 32). We should check this out. I think there are many values that are less than      24, so this is not just a typo in the publication.
+
+paridad = Parity (numeric, float)
+     Parity is the number of live births the mother has had previous to this current baby. 
+
+trim_exp_g = Trim_study (The trimester of pregnancy at the study interval for each year.
+     This variable breaks down the trim_exp variable into those who were in the control year and those who were in the earthquake year.
+     Stata now gives 6 values, as follows:
+	1 = First trimester, year 2009 (primero2009)
+	2 = Second trimester, year 2009 (segundo2009)
+	3 = Third trimester, year 2009 (tercero2009)
+	4 = First trimester, year 2010 (primero2010)
+	5 = Second trimester, year 2010 (segundo2010)
+	6 = Third trimester, year 2010 (tercero2010)
+
+pi = Ponderal_index (numeric, float)
+     Used as a more complex measure of adequate or inadequate fetal growth. Calculated as weight in grams / length (or height) in cm cubed
+
+exposed = Exposed (numeric, float)
+     Whether or not the pregnancy was exposed to the earthquake, i.e. a control or experimental. Given as a number which Stata strangely does
+    not define. We can define it by data inspection, as follows:
+	0 = Not exposed (control group)
+	1 = Exposed (earthquake group)
+     
+
+
+
+	
