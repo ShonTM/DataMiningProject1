@@ -1,4 +1,4 @@
-Clinic_ID,Excel_File_ID,Day,Month,Year,Sex,Weight,Lenght,Head_circ,Apgar_1,Apgar_5,Municipality,wgt_for_age,Gest_age,Trimester,Low_birthwgt,Premature,Maternal_age,Parity,Trim_study,Ponderal_index,Exposed
+Clinic_ID,Excel_File_ID,Day,Month,Year,Sex,Weight,Length,Head_circ,Apgar_1,Apgar_5,Municipality,wgt_for_age,Gest_age,Trimester,Low_birthwgt,Premature,Maternal_age,Parity,Trim_study,Ponderal_index,Exposed
 ,4714,27,8,2009,female,3285,48.5,34.5,9,9,500-1mill,aeg,40,Second,normal birthweight,Not premature,19,0,Second2009,2.879454,0
 ,2954,28,5,2009,male,2730,49,34,9,10,1mill-1.5mill,Peg,40,Third,normal birthweight,Not premature,32,0,Third2009,2.320462,0
 ,1154,27,2,2009,male,2840,47,35,8,9,500-1mill,aeg,37,Third,normal birthweight,Not premature,18,0,Third2009,2.735425,0
